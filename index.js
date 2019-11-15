@@ -213,13 +213,13 @@ class ProjectManager extends Instructor {
     super(obj);
     this.gradClassName = obj.gradClassName;
     this.favInstructor = obj.favInstructor;
-  }
-  standUp(channel) {
-    return `${this.name} announces to ${channel}, @channel standy times!`;
-  }
-  debugsCode(student, subject) {
-    return `${this.name} debugs ${student.name}'s code on ${subject}`;
-  }
+}
+standUp(channel) {
+  return `${this.name} announces to ${channel}, @channel standy times!`;
+}
+debugsCode(student, subject) {
+  return `${this.name} debugs ${student.name}'s code on ${subject}`;
+}
 }
 
 /*
@@ -237,11 +237,10 @@ class stretchStudent extends Student {
     this.grade = Math.floor((Math.random()*100)+1);
   }
   graduate() {
-    if (this.grade > 70) {
-      return `${this.name} graduates with a ${this.grade}!`;
-    } else {
-      return Instructor.prototype.gradeStudent(this);
+    while (this.grade <= 70) {
+      Instructor.prototype.gradeStudent(this);
     }
+    return `${this.name} graduates with a ${this.grade}!`;
   }
 }
 
